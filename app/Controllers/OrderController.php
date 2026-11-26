@@ -1,3 +1,5 @@
+//hủy đơn hàng (cancel()) 
+//đánh giá đơn hàng đã giao (review())
 <?php
 final class OrderController
 {
@@ -11,7 +13,6 @@ final class OrderController
     header('Location: taikhoan.php?tab=donhang', true, 303);
     exit;
 }
-
     private static function hd_positive_id($value): ?int
 {
     if (!is_int($value) && !is_string($value)) {
@@ -22,22 +23,20 @@ final class OrderController
     ]);
     return $id === false ? null : $id;
 }
-
     public function cancel()
     {
 
-// huydonhang.php — Hủy đơn của khách hàng bằng POST, CSRF và transaction.
+
+    // huydonhang.php — Hủy đơn của khách hàng bằng POST, CSRF và transaction.
+
+
 if (session_status() === PHP_SESSION_NONE) {
     session_start();
 }
 require_once (dirname(__DIR__, 2)) . '/csrf.php';
 header('Cache-Control: no-store');
-
-
-
-
-
 // Chỉ cho phép khách hàng đã đăng nhập thực hiện yêu cầu.
+// Lấy ID người dùng và email từ session, kiểm tra tính hợp lệ.
 $userId = self::hd_positive_id($_SESSION['user_id'] ?? null);
 $email = $_SESSION['user_email'] ?? '';
 if (($_SESSION['is_login'] ?? false) !== true || $userId === null
@@ -52,24 +51,20 @@ if (($_SERVER['REQUEST_METHOD'] ?? '') !== 'POST') {
     http_response_code(405);
     exit('Chỉ chấp nhận yêu cầu POST. Hãy hủy đơn từ trang tài khoản.');
 }
-
 if (!CsrfService::check($_POST['csrf_token'] ?? null)) {
     http_response_code(403);
     exit('Phiên xác thực không hợp lệ. Vui lòng tải lại trang tài khoản.');
 }
-
 $orderId = self::hd_positive_id($_POST['id'] ?? null);
 if ($orderId === null) {
     self::hd_redirect($userId, false, 'ID đơn hàng không hợp lệ.');
 }
-
 $inTransaction = false;
 try {
     mysqli_report(MYSQLI_REPORT_ERROR | MYSQLI_REPORT_STRICT);
     require_once (dirname(__DIR__, 2)) . '/connect.php';
     $conn->begin_transaction();
     $inTransaction = true;
-
     // Khóa tài khoản trước, cùng thứ tự với đặt hàng và cập nhật trạng thái Admin.
     $stmt = $conn->prepare('SELECT email FROM users WHERE id = ? FOR UPDATE');
     try {
@@ -96,7 +91,6 @@ try {
     if (!$order) {
         throw new DomainException('Không tìm thấy đơn hàng có thể thao tác.');
     }
-
     if ($order['phuong_thuc']==='PAYOS') throw new DomainException('Hãy quản lý hủy đơn QR tại trang chi tiết thanh toán; đơn đã chuyển tiền cần liên hệ TT SHOP.');
     // Yêu cầu gửi lại không làm thay đổi đơn hoặc hoàn lượt lần thứ hai.
     $status = (string)$order['trang_thai'];
@@ -108,7 +102,6 @@ try {
     if (!in_array($status, ['Chờ xử lý', 'Chờ lấy hàng'], true)) {
         throw new DomainException('Đơn hàng không còn ở trạng thái cho phép hủy.');
     }
-
     // Chỉ đổi trạng thái. Giữ nguyên giá, hạng khi mua và lịch sử voucher.
     $stmt = $conn->prepare("UPDATE donhang SET trang_thai = 'Đã huỷ'
         WHERE id = ? AND user_id = ?
@@ -139,17 +132,13 @@ try {
     self::hd_redirect($userId, false, $e instanceof DomainException
         ? $e->getMessage() : 'Không thể hủy đơn hàng. Vui lòng thử lại.');
 }
-
     }
-
     public function review()
     {
-
 // Kiểm tra và khởi chạy session nếu chưa được bật
 if (session_status() === PHP_SESSION_NONE) {
     session_start();
 }
-
 // Kết nối tới cơ sở dữ liệu (Database)
 include dirname(__DIR__, 2) . '/connect.php';
 

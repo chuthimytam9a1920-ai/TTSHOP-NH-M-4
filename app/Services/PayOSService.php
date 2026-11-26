@@ -1,3 +1,4 @@
+//tích hợp cổng thanh toán QR payOS
 <?php
 /** TT SHOP - extracted business logic. */
 final class PayOSService extends DatabaseService

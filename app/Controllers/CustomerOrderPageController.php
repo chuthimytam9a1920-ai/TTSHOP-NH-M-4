@@ -1,3 +1,5 @@
+//Chuẩn bị dữ liệu cho các trang đơn hàng phía khách hàng trong TT SHOP: 
+//danh sách đơn hàng, xem chi tiết đơn hàng, tra cứu đơn hàng và lưu đơn hàng khi đặt hàng thành công.
 <?php
 final class CustomerOrderPageController
 {
@@ -55,6 +57,10 @@ if (!isset($_SESSION['is_login']) || $_SESSION['is_login'] !== true) {
     exit();
 }
 
+
+//               HIỂN THỊ CHI TIẾT ĐƠN HÀNG CỦA KHÁCH HÀNG
+
+
 $user_id = (int)$_SESSION['user_id'];
 $order_id = (int)($_GET['id'] ?? 0);
 
@@ -75,6 +81,10 @@ $order = mysqli_fetch_assoc($resultOrder);
 if (!$order) {
     die("Không tìm thấy đơn hàng.");
 }
+
+
+//            HIỂN THỊ CHI TIẾT SẢN PHẨM TRONG ĐƠN HÀNG VÀ ĐÁNH GIÁ CỦA KHÁCH HÀNG
+
 
 $sqlItems = "
     SELECT *
@@ -134,6 +144,9 @@ $keyword = is_string($rawKeyword) ? trim($rawKeyword) : '';
 $orders = [];
 $lookupError = '';
 $isPost = ($_SERVER['REQUEST_METHOD'] === 'POST');
+
+//             TRA CỨU ĐƠN HÀNG THEO SỐ ĐIỆN THOẠI HOẶC EMAIL CỦA KHÁCH HÀNG
+
 if (!isset($_SESSION['order_lookup_csrf']) || !is_string($_SESSION['order_lookup_csrf'])) {
     $_SESSION['order_lookup_csrf'] = bin2hex(random_bytes(32));
 }
@@ -216,6 +229,10 @@ if (!isset($_SESSION['is_login']) || $_SESSION['is_login'] !== true) {
     header("Location: dangky.php");
     exit();
 }
+
+
+//            KIỂM TRA GIỎ HÀNG VÀ THÔNG TIN THANH TOÁN TRƯỚC KHI LƯU ĐƠN HÀNG
+
 
 $cart = $_SESSION['cart'] ?? [];
 $checkout = $_SESSION['checkout_info'] ?? [];

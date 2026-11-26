@@ -1,21 +1,26 @@
 <?php
 require_once __DIR__ . '/app/bootstrap.php';
-//Gọi đến controller giỏ hàng
+//Chuyển giá trị sang chuỗi và mã hóa các ký tự HTML đặc biệt
 function gh_escape($v) {
     return CartPageController::gh_escape($v);
 }
+//Chuyển đổi số thành định dạng tiền tệ Việt Nam
 function gh_money($v) {
     return CartPageController::gh_money($v);
 }
+//Xóa mã giảm giá khỏi giỏ hàng
 function gh_clear_voucher() {
     CartPageController::gh_clear_voucher();
 }
+//Thiết lập HTTP status code và header
 function gh_json($data, $status = 200) {
     CartPageController::gh_json($data, $status);
 }
+//Kiểm tra tính hợp lệ của số lượng và mã sản phẩm
 function gh_refresh_cart(mysqli $conn): int {
     return CartPageController::gh_refresh_cart($conn);
 }
+//làm mới giỏ hàng, tính phí vận chuyển, lấy hạng thành viên, và áp dụng mã giảm giá nếu có
 function gh_snapshot(
     mysqli $conn,
     bool $logged,

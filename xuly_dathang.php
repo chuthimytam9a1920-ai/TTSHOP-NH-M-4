@@ -1,29 +1,38 @@
 <?php
 require_once __DIR__ . '/app/bootstrap.php';
+//Thêm sản phẩm vào giỏ hàng
 function dh_text($v): string {
     return CheckoutController::dh_text($v);
 }
+//Định dạng số tiền thành chuỗi tiền tệ, ví dụ: 1000000 -> "1.000.000 ₫"
 function dh_escape($v): string {
     return CheckoutController::dh_escape($v);
 }
+//Định dạng số tiền thành chuỗi tiền tệ, ví dụ: 1000000 -> "1.000.000 ₫"
 function dh_money($v): string {
     return CheckoutController::dh_money($v);
 }
+//Chuyển hướng người dùng đến URL chỉ định, thường được sử dụng sau khi đặt hàng thành công.
 function dh_redirect(string $url): void {
     CheckoutController::dh_redirect($url);
 }
+//Hiển thị thông báo lỗi và chuyển hướng người dùng đến trang chỉ định, thường được sử dụng khi đặt hàng thất bại.
 function dh_fail(string $message, string $page = 'phuongthucthanhtoan.php'): void {
     CheckoutController::dh_fail($message, $page);
 }
+//Lấy thông tin giao hàng từ dữ liệu đơn hàng, trả về mảng chứa thông tin giao hàng.
 function dh_delivery(array $info): array {
     return CheckoutController::dh_delivery($info);
 }
+//Lấy thông tin thanh toán từ dữ liệu đơn hàng, trả về mảng chứa thông tin thanh toán.
 function dh_clear_checkout(): void {
     CheckoutController::dh_clear_checkout();
 }
+//Lấy thông tin thanh toán từ dữ liệu đơn hàng, trả về mảng chứa thông tin thanh toán.
 function dh_refresh_cart(mysqli $conn, array $cart): array {
     return CheckoutController::dh_refresh_cart($conn, $cart);
 }
+//Lấy danh mục sản phẩm dựa trên ID cũ và tên, trả về ID danh mục mới.
 function dh_catalog_id(mysqli $conn, int $legacy, string $name): int {
     return CheckoutController::dh_catalog_id($conn, $legacy, $name);
 }

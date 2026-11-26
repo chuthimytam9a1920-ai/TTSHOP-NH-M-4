@@ -67,10 +67,14 @@ if ($id == '' || $name == '' || $price <= 0) {
     die("Dữ liệu sản phẩm không hợp lệ.");
 }
 
+
+//////THÊM MỚI SẢN PHẨM VÀO GIỎ HÀNG
+
+
 if (!isset($_SESSION['cart'])) {
     $_SESSION['cart'] = [];
 }
-
+//Cập nhật và đồng bộ số lượng sản phẩm trong giỏ hàng nếu sản phẩm đã tồn tại, nếu chưa thì thêm mới vào giỏ hàng
 if (isset($_SESSION['cart'][$id])) {
     $_SESSION['cart'][$id]['qty'] += $qty;
     $_SESSION['cart'][$id]['name'] = $name;
@@ -78,6 +82,7 @@ if (isset($_SESSION['cart'][$id])) {
     $_SESSION['cart'][$id]['old_price'] = $old_price;
     $_SESSION['cart'][$id]['img'] = $img;
 } else {
+    //nếu chưa thì thêm mới vào giỏ hàng
     $_SESSION['cart'][$id] = [
         'id' => $id,
         'name' => $name,
@@ -182,12 +187,12 @@ if (!$cartService->contains($id)) {
     ]);
     exit();
 }
-
+//Cập nhật số lượng sản phẩm
 echo json_encode($cartService->changeQuantity($id, $action));
 exit();
 
     }
-
+//Xóa sản phẩm khỏi giỏ hàng
     public function remove()
     {
 
@@ -791,9 +796,7 @@ try {
         $code = $result['voucher']['ma_code'];
 
         // Lưu mã và chủ tài khoản vào SESSION
-
         $_SESSION['voucher_code'] = $code;
-
         $_SESSION['voucher_user_id'] = $userId;
 
         self::voucher_response(

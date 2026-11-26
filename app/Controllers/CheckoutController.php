@@ -1,3 +1,4 @@
+//xử lý luồng thanh toán và đặt hàn
 <?php
 final class CheckoutController
 {
