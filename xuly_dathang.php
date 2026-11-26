@@ -169,6 +169,7 @@ extract((new CheckoutController())->placeOrder(), EXTR_OVERWRITE);
         <p class="tt-receipt-note">Quý khách có thể theo dõi trạng thái đơn hàng trong tài khoản.</p>
     </section>
 </main>
+
 <script>
 (function () {
     const header = document.querySelector('body > header');

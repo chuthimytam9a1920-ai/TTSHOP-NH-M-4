@@ -1,6 +1,6 @@
 <?php
 date_default_timezone_set('Asia/Ho_Chi_Minh');
-
+// Cấu hình kết nối cơ sở dữ liệu
 $servername = "127.0.0.1";
 $username = "root";
 $password = "";

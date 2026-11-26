@@ -1,5 +1,6 @@
 <?php
 require_once __DIR__ . '/app/bootstrap.php';
+//Gọi đến controller giỏ hàng
 function gh_escape($v) {
     return CartPageController::gh_escape($v);
 }
@@ -540,18 +541,14 @@ document.addEventListener('DOMContentLoaded', () => {
     // Hiển thị thông báo
 
     function msg(text, ok = false) {
-
         $('voucher-message').textContent = text || '';
-
         $('voucher-message')
             .classList.toggle('success', ok);
     }
 
-
     // Quản lý trạng thái các nút
 
     function controls() {
-
         document.querySelectorAll(
             '.cart-plus,.cart-minus'
         ).forEach(b => b.disabled = busy);
@@ -576,7 +573,6 @@ document.addEventListener('DOMContentLoaded', () => {
                 busy
                 || !state.ok
                 || b.dataset.allowed !== '1';
-
         });
     }
 

@@ -197,7 +197,6 @@ $('delivery-form').addEventListener('submit',e=>{if(busy||!state.ok||!state.item
 window.addEventListener('pageshow', e => {
     if (e.persisted) location.reload();
 });
-
 // Khởi tạo và hiển thị thông tin đơn hàng
 render(state);
 

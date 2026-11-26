@@ -1,6 +1,6 @@
 <?php
 require_once __DIR__ . '/app/bootstrap.php';
-
+//Hiển thị trang thanh toán QR
 extract((new QrPaymentPageController())->show(), EXTR_OVERWRITE);
 ?>
 <!doctype html><html lang="vi"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Thanh toán QR - TT SHOP</title><link rel="stylesheet" href="style.css?v=10"><style>

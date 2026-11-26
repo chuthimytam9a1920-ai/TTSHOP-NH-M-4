@@ -1,7 +1,6 @@
 <?php
 // TT SHOP - payOS REST API. No credentials in source control.
 require_once __DIR__ . '/app/bootstrap.php';
-
 function payos_config(): array {
     return PayOSService::config();
 }

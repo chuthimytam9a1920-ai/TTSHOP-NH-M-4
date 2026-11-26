@@ -130,7 +130,6 @@ extract((new CheckoutController())->paymentMethod(), EXTR_OVERWRITE);
             <?= checkout_escape($checkout['dia_chi']) ?><br>
             <a href="thanhtoan.php">Thay đổi thông tin</a>
         </div>
-
         <form id="paymentForm" action="xuly_dathang.php" method="POST">
             <input type="hidden" name="csrf_token" value="<?= checkout_escape($token) ?>">
             <input type="hidden" name="review_id" value="<?= checkout_escape($reviewId) ?>">
