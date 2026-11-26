@@ -295,3 +295,4 @@ extract((new AdminDashboardController())->reports(), EXTR_OVERWRITE);
 </div>
 </body>
 </html>
+
