@@ -34,7 +34,7 @@ final class PasswordResetMailService
 
     public static function resetBaseUrl()
 {
-    $scriptName = $_SERVER['SCRIPT_NAME'] ?? '/TTSHOP-main/TTSHOP-main/xulyquenmatkhau.php';
+$scriptName = $_SERVER['SCRIPT_NAME'] ?? '/TTSHOP-OOP/xulyquenmatkhau.php';
     $directory = str_replace('\\', '/', dirname($scriptName));
     $path = $directory === '/' || $directory === '.' ? '' : $directory;
     $host = $_SERVER['SERVER_NAME'] ?? 'localhost';

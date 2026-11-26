@@ -4,5 +4,5 @@ return [
     'client_id' => '',
     'api_key' => '',
     'checksum_key' => '',
-    'base_url' => 'http://localhost/TTSHOP-main',
+    'base_url' => 'http://localhost/TTSHOP-OOP',
 ];
