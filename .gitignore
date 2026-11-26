@@ -1,0 +1,6 @@
+/config_mail.php
+/config_payos.php
+.history/
+.env
+.env.*
+*.log
