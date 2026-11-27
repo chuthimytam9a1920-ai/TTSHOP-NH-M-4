@@ -1,6 +1,6 @@
+<?php
 //hủy đơn hàng (cancel()) 
 //đánh giá đơn hàng đã giao (review())
-<?php
 final class OrderController
 {
     private static function hd_redirect(int $userId, bool $ok, string $message): void

@@ -31,6 +31,7 @@ if (is_string($rawId) && preg_match('/^(cat_)?([1-9][0-9]{0,9})$/D', $rawId, $ma
 }
 $product = null;
 if ($productId > 0) {
+    // Lấy thông tin sản phẩm từ database
     $product = (new ProductRepository($conn))->findForCart($productId, $isCategory);
 }
 

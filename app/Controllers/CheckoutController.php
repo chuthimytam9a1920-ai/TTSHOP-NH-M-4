@@ -1,5 +1,5 @@
-//xử lý luồng thanh toán và đặt hàn
 <?php
+//xử lý luồng thanh toán và đặt hàn
 final class CheckoutController
 {
     public static function dh_text($v): string {

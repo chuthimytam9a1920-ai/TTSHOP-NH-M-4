@@ -1,4 +1,6 @@
 <?php
+//Lấy thông tin mã giảm giá từ database
+//Từ bảng magiamgia, tìm kiếm theo ma_code và trả về thông tin mã giảm giá cùng với thời gian hiện tại của database (NOW() AS now_db). Nếu $lock là true, thêm FOR UPDATE để khóa bản ghi trong quá trình truy vấn.
 /** TT SHOP - extracted business logic. */
 final class VoucherService extends DatabaseService
 {
