@@ -1,5 +1,4 @@
-//Chuẩn bị dữ liệu cho các trang đơn hàng phía khách hàng trong TT SHOP: 
-//danh sách đơn hàng, xem chi tiết đơn hàng, tra cứu đơn hàng và lưu đơn hàng khi đặt hàng thành công.
+
 <?php
 final class CustomerOrderPageController
 {
