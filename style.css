@@ -833,8 +833,8 @@ body {
     transition: all 0.25s ease;
     position: relative;
 }
-
-.product-item:hover {
+/*nâng lên khi chạm vào */
+.product-item:hover {   
     transform: translateY(-10px);
     box-shadow: 0 12px 30px rgba(0,0,0,0.15);
 }

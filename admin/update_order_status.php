@@ -1,3 +1,4 @@
 <?php
 require_once dirname(__DIR__) . '/app/bootstrap.php';
-(new AdminOrderController())->updateStatus();
+(new AdminOrderController())->updateStatus(); 
+

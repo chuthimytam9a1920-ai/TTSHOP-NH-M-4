@@ -26,7 +26,7 @@ if (isset($_SESSION['cart'])) {
             </a>
         </div>
 
-        <!-- SEARCH -->
+        <!-- SEARCH tạo ô tìm kiếm -->
         <form class="search-box" action="category.php" method="GET">
 
             <input 

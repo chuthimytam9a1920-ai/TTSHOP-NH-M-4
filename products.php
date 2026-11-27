@@ -32,15 +32,15 @@ function showProducts($conn, $category_id, $title) {
 
                         <div class="badge-group">
                             <?php if ($is_hot): ?>
-                                <span class="badge-new badge-hot">🔥 HOT</span>                            
+                                <span class="badge-new badge-hot">🔥 HOT</span> 
                             <?php endif; ?>
 
                             <?php if ($is_flash_sale): ?>
-                                <span class="badge-new badge-flash">⚡ FLASH SALE</span>                            
+                                <span class="badge-new badge-flash">⚡ FLASH SALE</span> 
                             <?php endif; ?>
 
                             <?php if ($is_new): ?>
-                                <span class="badge-new badge-new-product">✨ NEW</span>                            
+                                <span class="badge-new badge-new-product">✨ NEW</span> 
                             <?php endif; ?>
                         </div>
 

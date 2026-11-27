@@ -54,15 +54,33 @@ $ttInfoGroups = ['Hỗ trợ khách hàng' => array_slice($ttInfoPages, 0, 5, tr
                 <li><strong>Tìm sản phẩm</strong><p>Sử dụng thanh tìm kiếm hoặc menu danh mục để chọn đồ dùng học tập. Xem hình ảnh, giá và thông tin sản phẩm trước khi mua.</p></li>
                 <li><strong>Thêm vào giỏ hàng</strong><p>Chọn số lượng, bấm thêm vào giỏ hàng hoặc mua ngay. Mở giỏ hàng để kiểm tra và điều chỉnh số lượng.</p></li>
                 <li><strong>Đăng nhập và nhập thông tin giao hàng</strong><p>Đăng nhập hoặc đăng ký tài khoản nếu cần. Kiểm tra họ tên người nhận, số điện thoại và địa chỉ nhận hàng.</p></li>
-                <li><strong>Áp dụng ưu đãi và chọn phương thức thanh toán</strong><p>Nhập mã giảm giá nếu đủ điều kiện. Kiểm tra tiền hàng, phí vận chuyển, số tiền giảm và tổng thanh toán. Chọn COD.</p></li>
-                <li><strong>Hoàn tất và theo dõi đơn hàng</strong><p>Xác nhận đặt hàng. Vào Tài khoản → Danh sách đơn hàng để xem trạng thái và chi tiết đơn.</p></li>
+                <li><strong>Áp dụng ưu đãi và chọn phương thức thanh toán</strong><p>Nhập mã giảm giá nếu đủ điều kiện. Kiểm tra tiền hàng, phí vận chuyển, số tiền giảm và tổng thanh toán. Chọn thanh toán khi giao hàng (COD) hoặc chuyển khoản ngân hàng bằng mã QR (VietQR / payOS) nếu khả dụng.</p></li>
+                <li><strong>Hoàn tất và theo dõi đơn hàng</strong><p>Xác nhận đặt hàng. Nếu chọn thanh toán QR, quét mã trên trang thanh toán payOS và xác nhận giao dịch bằng ứng dụng ngân hàng. Vào Tài khoản → Danh sách đơn hàng để xem trạng thái và chi tiết đơn.</p></li>
             </ol>
             <div class="tt-info-actions"><a class="tt-info-btn" href="sanphamhocbang.php">Khám phá sản phẩm</a><a class="tt-info-btn secondary" href="giohang.php">Xem giỏ hàng</a></div>
 <?php break; case 'huongdanthanhtoan': ?>
             <h2>Phương thức thanh toán hiện có</h2>
-            <div class="tt-info-highlight"><i class="fas fa-money-bill-wave" aria-hidden="true"></i><div><strong>Thanh toán khi giao hàng (COD)</strong><p>Khách hàng thanh toán số tiền cần trả khi nhận hàng. Website hiện chưa có cổng thanh toán trực tuyến.</p></div></div>
+            <!-- Thanh toán khi nhận hàng -->
+            <div class="tt-info-highlight">
+                <i class="fas fa-money-bill-wave" aria-hidden="true"></i>
+                <div><strong>Thanh toán khi giao hàng (COD)</strong><p>Khách hàng thanh toán số tiền cần trả khi nhận hàng.</p></div>
+            </div>
+            <!-- Thanh toán trực tuyến qua VietQR / payOS -->
+            <div class="tt-info-highlight" style="margin-top:15px;">
+                <i class="fas fa-qrcode" aria-hidden="true"></i>
+                <div><strong>Chuyển khoản ngân hàng (VietQR / payOS)</strong><p>Khách hàng quét mã QR trên trang thanh toán payOS bằng ứng dụng ngân hàng. Mã QR được tạo với số tiền và nội dung chuyển khoản của đơn hàng. Hệ thống cập nhật trạng thái khi giao dịch được xác nhận.</p></div>
+            </div>
             <h2>Quy trình thanh toán</h2>
-            <ol><li>Kiểm tra sản phẩm và số lượng trong giỏ hàng.</li><li>Xác nhận thông tin nhận hàng và áp dụng voucher phù hợp.</li><li>Kiểm tra tổng tiền sau giảm giá và phí giao hàng.</li><li>Chọn COD, bấm Hoàn tất đơn hàng và lưu mã đơn để theo dõi.</li></ol>
+            <ol>
+                <li>Kiểm tra sản phẩm và số lượng trong giỏ hàng.</li>
+                <li>Xác nhận thông tin nhận hàng và áp dụng voucher phù hợp.</li>
+                <li>Kiểm tra tổng tiền sau giảm giá và phí giao hàng.</li>
+                <li>Chọn COD hoặc chuyển khoản ngân hàng (VietQR / payOS), sau đó bấm Hoàn tất đơn hàng.</li>
+                <li>Với COD, thanh toán khi nhận hàng. Với VietQR, quét mã trên trang thanh toán payOS, kiểm tra thông tin và xác nhận giao dịch trên ứng dụng ngân hàng.</li>
+                <li>Lưu mã đơn và theo dõi trạng thái đơn hàng trong tài khoản.</li>
+            </ol>
+            <h2>Lưu ý khi thanh toán QR</h2>
+            <p class="tt-info-note">Kiểm tra số tiền và thông tin người nhận trước khi chuyển khoản. Nếu đã chuyển khoản, không thanh toán lại khi hệ thống chưa cập nhật; hãy kiểm tra trạng thái giao dịch hoặc liên hệ TT SHOP. Nếu kênh QR chưa khả dụng, hãy chọn COD tại bước lựa chọn phương thức thanh toán trước khi hoàn tất đơn hàng.</p>
             <h2>Lưu ý khi dùng voucher</h2><p>Mỗi mã có điều kiện riêng về hạng thành viên, giá trị đơn tối thiểu, mức giảm tối đa, thời hạn và lượt sử dụng. Số tiền hiển thị ở bước xác nhận cuối cùng là số tiền cần kiểm tra trước khi đặt hàng.</p>
             <div class="tt-info-actions"><a class="tt-info-btn" href="giohang.php">Đến giỏ hàng</a><a class="tt-info-btn secondary" href="khachhangthanthiet.php">Xem chương trình thành viên</a></div>
 <?php break; case 'chinhsachgiaohang': ?>

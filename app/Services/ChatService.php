@@ -75,7 +75,7 @@ final class ChatService extends DatabaseService
     $value = trim($value);
     return preg_match('/^.{1,2000}$/usD', $value) === 1 ? $value : null;
 }
-
+ // Nhận diện từ khóa liên quan đến giao hàng
     public static function botReply(string $message): string {
     if (preg_match('/giao hàng|ship/iu', $message)) return 'Shop giao hàng toàn quốc từ 2 - 5 ngày tuỳ khu vực 🚚';
     if (preg_match('/đổi trả|hoàn tiền/iu', $message)) return 'Shop hỗ trợ đổi trả trong 7 ngày nếu sản phẩm bị lỗi từ nhà sản xuất 🔄';

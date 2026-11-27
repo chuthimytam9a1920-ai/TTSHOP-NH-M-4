@@ -1008,6 +1008,38 @@ function confirmCancelOrder(form) {
     return false;
 }
 
+
+function confirmCancelOrder(form) {
+    // Giữ popup SweetAlert; nếu CDN lỗi, dùng hộp xác nhận của trình duyệt.
+    if (typeof Swal === 'undefined') {
+        return window.confirm('Bạn có chắc chắn muốn huỷ đơn hàng này không?');
+    }
+    const button = form.querySelector('button[type="submit"]');
+    if (button.disabled) return false;
+    button.disabled = true;
+    Swal.fire({
+        title: 'Huỷ đơn hàng?',
+        text: 'Bạn có chắc chắn muốn huỷ đơn hàng này không?',
+        icon: 'warning',
+        showCancelButton: true,
+        confirmButtonColor: '#e53935',
+        cancelButtonColor: '#999',
+        confirmButtonText: 'Đồng ý huỷ',
+        cancelButtonText: 'Không',
+        borderRadius: '18px'
+    }).then((result) => {
+        if (result.isConfirmed) {
+            // Gửi form POST có CSRF, không gọi lại onsubmit.
+            HTMLFormElement.prototype.submit.call(form);
+        } else {
+            button.disabled = false;
+        }
+    }).catch(() => {
+        button.disabled = false;
+    });
+    return false;
+}
+    
 </script>
 </body>
 </html>

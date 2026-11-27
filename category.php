@@ -6,7 +6,7 @@ function buildQuery($extra = []) {
 function tinhGiamGia($oldPrice, $price) {
     return CatalogController::category_tinhGiamGia($oldPrice, $price);
 }
-extract((new CatalogController())->category(), EXTR_OVERWRITE);
+extract((new CatalogController())->category(), EXTR_OVERWRITE);       //Gọi lớp xử lý tìm kiếm
 ?>
 
 <!DOCTYPE html>
