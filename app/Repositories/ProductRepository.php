@@ -3,6 +3,9 @@ final class ProductRepository extends DatabaseService
 {
     public function featured($categoryId)
     {
+        // Lấy sản phẩm thuộc danh mục được yêu cầu
+    // Sắp xếp theo ID giảm dần
+    // Giới hạn tối đa 8 sản phẩm
         // Original featured query; current caller uses fixed category IDs.
         $sql = "SELECT * FROM products
             WHERE category_id = '$categoryId'

@@ -96,7 +96,7 @@ $categoryBanners = [
 
 $banner = $categoryBanners[$type] ?? 'images/olyy.png';
 
-$search = trim($_GET['search'] ?? '');
+$search = trim($_GET['search'] ?? ''); //Tiếp nhận từ khóa
 $filter = $_GET['filter'] ?? [];
 $priceFilter = $_GET['price'] ?? [];
 $sort = $_GET['sort'] ?? '';
@@ -107,7 +107,7 @@ if (!is_array($priceFilter)) $priceFilter = [];
 $where = [];
 $params = [];
 $types = "";
-
+//Xây dựng điều kiện tìm kiếm
 if ($search !== '') {
     $where[] = "name LIKE ?";
     $params[] = "%" . $search . "%";
@@ -178,10 +178,10 @@ if ($sort === 'asc') {
 if ($sort === 'desc') {
     $orderSql = "ORDER BY price DESC";
 }
-
+// Lấy số trang từ URL, nếu không có thì mặc định là trang 1
 $page = isset($_GET['page']) ? (int)$_GET['page'] : 1;
 if ($page < 1) $page = 1;
-
+// Đảm bảo số trang không nhỏ hơn 1
 $limit = 4;
 $start = ($page - 1) * $limit;
 
